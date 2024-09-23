@@ -98,12 +98,41 @@
 #     else:
 #         newword += letter
 # challenge 7
-def zeroesToEnd(lst):
-    lst.sort(key=lambda x: x == 0)
-    return lst
-    # for element in lst:
-    #     if element == 0:
-    #         lst.remove(element)
-    #         lst.append(0)
-    # return lst
-print(zeroesToEnd([0, 0, 2, 0, 5]))
+# def zeroesToEnd(lst):
+#     lst.sort(key=lambda x: x == 0)
+#     return lst
+#     # for element in lst:
+#     #     if element == 0:
+#     #         lst.remove(element)
+#     #         lst.append(0)
+#     # return lst
+# print(zeroesToEnd([0, 0, 2, 0, 5]))
+# challenge 8
+# def id_mtrx(n):
+#     if not type(n) == int: return "Error"
+#     s = 1  if n >= 0 else -1
+#     lst = [[1 if j == i else 0 for j in range(abs(n))] for i in range(abs(n))][::s]
+#
+#     #if n < 0:
+#     #    lst = [[lst[i][j]for j in range(len(lst[0])-1, -1, -1)] for i in range(abs(n))]
+#     return lst
+#
+# print(id_mtrx(-3))
+#challenge 9
+# def shift_sentence(txt):
+#     words = txt.split()
+#     nwords = []
+#     for word in range(len(words)-1, -1, -1):
+#         nwords.append(words[word-1][0] + words[word][1:])
+#     return " ".join(nwords[::-1])
+#
+# print(shift_sentence("the output is not very legible"))
+#AI solution
+def shift_sentence(txt):
+    words = txt.split()
+    # Shift the first character of each word to the next word
+    shifted_words = [words[-1][0] + words[0][1:]]
+    for i in range(1, len(words)):
+        shifted_words.append(words[i - 1][0] + words[i][1:])
+    return " ".join(shifted_words)
+print(shift_sentence("the output is not very legible"))
